@@ -33,14 +33,14 @@ public class StatsClient {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     String application;
-    String StatsServiceUri;
+    String statsServiceUri;
     ObjectMapper json;
     HttpClient httpClient;
 
     public StatsClient(ObjectMapper json) {
         this.json = json;
         application = "";
-        StatsServiceUri = "";
+        statsServiceUri = "";
         httpClient = HttpClient.newBuilder().build();
 
     }
@@ -56,7 +56,7 @@ public class StatsClient {
         try {
             HttpRequest.BodyPublisher bodyPublisher = HttpRequest.BodyPublishers.ofString(json.writeValueAsString(hit));
             HttpRequest hitRequest = HttpRequest.newBuilder()
-                    .uri(URI.create(StatsServiceUri + "/hit"))
+                    .uri(URI.create(statsServiceUri + "/hit"))
                     .POST(bodyPublisher)
                     .header(HttpHeaders.CONTENT_TYPE, "application/json")
                     .header(HttpHeaders.ACCEPT, "application/json")
@@ -65,7 +65,7 @@ public class StatsClient {
             HttpResponse<Void> response = httpClient.send(hitRequest, HttpResponse.BodyHandlers.discarding());
             log.debug("responce from stats-service: {}", response);
         } catch (Exception e) {
-
+            log.warn("responce from stats-service: {}", e.getMessage());
         }
 
 
