@@ -8,8 +8,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.jackson.Jacksonized;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Jacksonized

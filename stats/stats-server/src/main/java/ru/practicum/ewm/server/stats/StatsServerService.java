@@ -6,7 +6,7 @@ import ru.practicum.ewm.dto.stats.ViewStats;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface  StatsServerService {
+public interface StatsServerService {
     EndpointHit addHit(EndpointHit endpointHit);
 
 

@@ -2,7 +2,9 @@ package ru.practicum.ewm.client.stats;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -46,8 +48,8 @@ public class StatsClient {
 
     public void hit(HttpServletRequest userRequset) {
         EndpointHit hit = EndpointHit.builder()
-        .app(application)
-        .ip(userRequset.getRemoteAddr())
+                .app(application)
+                .ip(userRequset.getRemoteAddr())
                 .uri(userRequset.getRequestURI())
                 .timestamp(LocalDateTime.now())
                 .build();
@@ -62,8 +64,7 @@ public class StatsClient {
 
             HttpResponse<Void> response = httpClient.send(hitRequest, HttpResponse.BodyHandlers.discarding());
             log.debug("responce from stats-service: {}", response);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
 
@@ -75,17 +76,12 @@ public class StatsClient {
     }
 
     private String toQueryString(ViewsStatsRequest request) {
-        return  null;
+        return null;
     }
 
     private String encode(String value) {
         return URLEncoder.encode(value, StandardCharsets.UTF_8);
     }
-
-
-
-
-
 
 
 }

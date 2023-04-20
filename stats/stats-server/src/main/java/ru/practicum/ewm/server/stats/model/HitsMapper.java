@@ -12,7 +12,6 @@ public class HitsMapper {
     }
 
 
-
     public Hits fromEndpointHitToHits(EndpointHit endpointHit) {
         Hits hits = new Hits();
         hits.setApp(endpointHit.getApp());

@@ -34,18 +34,15 @@ public class StatsServerController {
 
     @GetMapping(path = "/stats", params = {"start", "end"})
     public List<ViewStats> getStats(@RequestParam String start,
-                                               @RequestParam String end,
-                                               @RequestParam(required = false, defaultValue = "false") String unique,
-                                               @RequestParam(required = false) List<String> uris )
-    {
+                                    @RequestParam String end,
+                                    @RequestParam(required = false, defaultValue = "false") String unique,
+                                    @RequestParam(required = false) List<String> uris) {
 
         LocalDateTime tStart = LocalDateTime.parse(start, formatter);
         LocalDateTime tEnd = LocalDateTime.parse(end, formatter);
         Boolean bUnique = Boolean.valueOf(unique);
         return service.getStats(tStart, tEnd, bUnique, uris);
     }
-
-
 
 
 }

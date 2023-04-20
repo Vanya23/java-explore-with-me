@@ -19,15 +19,13 @@ import java.util.*;
 public class StatsServerServiceImpl implements StatsServerService {
 
     HitsRepository repository;
-      HitsMapper hitsMapper;
+    HitsMapper hitsMapper;
 
     @Override
     public EndpointHit addHit(EndpointHit endpointHit) {
         return hitsMapper.fromHitsToEndpointHit(repository.save(hitsMapper.fromEndpointHitToHits(endpointHit)));
 
     }
-
-
 
 
     @Override
@@ -39,13 +37,13 @@ public class StatsServerServiceImpl implements StatsServerService {
                 listSt) {
             String currentUri = h.getUri();
 
-            if(!mapH.containsKey(currentUri)) mapH.put(currentUri, new ArrayList<>());
+            if (!mapH.containsKey(currentUri)) mapH.put(currentUri, new ArrayList<>());
 
             mapH.get(currentUri).add(h);
         }
 
 
-        if(uris == null || uris.size() == 0) { // если список пустой, значит все ключи
+        if (uris == null || uris.size() == 0) { // если список пустой, значит все ключи
             uris = new ArrayList<>();
             uris.addAll(mapH.keySet());
         }
