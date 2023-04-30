@@ -52,6 +52,7 @@ public class StatsServerServiceImpl implements StatsServerService {
 
         for (String sUri :
                 uris) {
+            if (!mapH.containsKey(sUri)) continue;
             List<Hits> listStbuf = mapH.get(sUri);
             ViewStats viewStats = new ViewStats();
             viewStats.setApp(listStbuf.get(0).getApp());
