@@ -5,7 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.jackson.Jacksonized;
 import ru.practicum.ewm.controller.pub.Create;
-import ru.practicum.ewm.controller.pub.LocationDto;
+import ru.practicum.ewm.controller.pub.location.LocationDto;
 import ru.practicum.ewm.controller.pub.category.dto.CategoryDto;
 import ru.practicum.ewm.controller.pub.users.dto.UserShortDto;
 

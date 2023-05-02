@@ -1,11 +1,7 @@
-package ru.practicum.ewm.controller.pub.requests.model;
+package ru.practicum.ewm.controller.pub.comments.model;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.ewm.controller.pub.enums.EventUpdateState;
 import ru.practicum.ewm.controller.pub.events.model.Event;
 import ru.practicum.ewm.controller.pub.users.model.User;
 
@@ -15,38 +11,38 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
-@Table(name = "requests")
-
-public class ParticipationRequest {
+@Table(name = "comments")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     Long id;
-    @Column(name = "created")
-    LocalDateTime created;
     @ManyToOne
     @JoinColumn(name = "id_user")
-    User requester;
+    User user;
     @ManyToOne
     @JoinColumn(name = "id_event")
     Event event;
-    @Enumerated(EnumType.STRING)
-    EventUpdateState status;
+    @Column(name = "created")
+    LocalDateTime created;
+    @Column(name = "patched")
+    LocalDateTime patched;
+    @Column(name = "text_com")
+    String text;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ParticipationRequest)) return false;
-        return id != null && id.equals(((ParticipationRequest) o).getId());
+        if (!(o instanceof Comment)) return false;
+        return id != null && id.equals(((Comment) o).getId());
     }
 
     @Override
     public int hashCode() {
         return getClass().hashCode();
     }
-
-
 }

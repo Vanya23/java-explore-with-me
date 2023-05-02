@@ -1,4 +1,4 @@
-package ru.practicum.ewm.controller.pub;
+package ru.practicum.ewm.controller.pub.location;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

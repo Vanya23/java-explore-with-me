@@ -2,7 +2,7 @@ package ru.practicum.ewm.controller.pub.events.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.ewm.controller.pub.LocationDto;
+import ru.practicum.ewm.controller.pub.location.LocationDto;
 
 @NoArgsConstructor
 @AllArgsConstructor
