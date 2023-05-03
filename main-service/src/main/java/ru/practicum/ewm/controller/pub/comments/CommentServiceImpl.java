@@ -23,7 +23,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CommentServiceImpl implements CommentService {
     CommentRepository repository;
@@ -36,7 +35,6 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
-    @Transactional
     public CommentOutDto addComment(long userId, long eventId, CommentInDto commentDto) {
         Comment comment = commentMapper.fromCommentsInDtoToComment(commentDto);
         comment.setCreated(LocalDateTime.now());
@@ -50,17 +48,16 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public void deleteByUser(long userId) {
-        repository.deleteCommentByUser_Id(userId);
+        repository.deleteByUser_Id(userId);
     }
 
     @Override
     @Transactional
     public void deleteByEvent(long eventId) {
-        repository.deleteCommentByEvent_Id(eventId);
+        repository.deleteByEvent_Id(eventId);
     }
 
     @Override
-    @Transactional
     public void deleteById(long commentId) {
         repository.deleteById(commentId);
     }
@@ -79,18 +76,23 @@ public class CommentServiceImpl implements CommentService {
 
 
     @Override
+    @Transactional(readOnly = true)
     public CommentOutDto getCommentsById(long commentId) {
         if (!repository.existsById(commentId)) throw new BadRequestException("");
         return commentMapper.fromCommentsToCommentOutDto(repository.getReferenceById(commentId));
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<CommentOutDto> getCommentsByUserAndEvents(List<Long> idsu, List<Long> idse, int from, int size) {
         Pageable pageable = myServicePage.checkAndCreatePageable(from, size, sortIdAsc);
 
         Page<Comment> page;
-        if (idsu.size() == 0 && idse.size() == 0) page = repository.findAll(pageable);
-        else page = repository.findByUserInAndEvent_IdIn(idsu, idse, pageable);
+        if (idsu.size() == 0 && idse.size() == 0) {
+            page = repository.findAll(pageable);
+        } else {
+            page = repository.findByUser_IdInAndEvent_IdIn(idsu, idse, pageable);
+        }
 
         List<Comment> comments = page.getContent();
 

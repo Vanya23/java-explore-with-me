@@ -11,9 +11,9 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 
-    void deleteCommentByUser_Id(Long userId);
+    void deleteByUser_Id(Long userId);
 
-    void deleteCommentByEvent_Id(Long eventId);
+    void deleteByEvent_Id(Long eventId);
 
-    Page<Comment> findByUserInAndEvent_IdIn(List<Long> users, List<Long> events, Pageable pageable);
+    Page<Comment> findByUser_IdInAndEvent_IdIn(List<Long> users, List<Long> events, Pageable pageable);
 }
