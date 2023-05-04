@@ -1,4 +1,4 @@
-package ru.practicum.ewm.controller.pub.category.dto;
+package ru.practicum.ewm.controller.pub.location;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -13,7 +13,8 @@ import lombok.extern.jackson.Jacksonized;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CategoryDto {
+public class LocationDto {
     Long id;
-    String name;
+    Double lat;
+    Double lon;
 }

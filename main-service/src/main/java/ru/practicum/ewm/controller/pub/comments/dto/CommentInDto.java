@@ -1,9 +1,12 @@
-package ru.practicum.ewm.controller.pub.category.dto;
+package ru.practicum.ewm.controller.pub.comments.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.jackson.Jacksonized;
+import ru.practicum.ewm.controller.pub.Create;
+
+import javax.validation.constraints.NotBlank;
 
 
 @NoArgsConstructor
@@ -13,7 +16,9 @@ import lombok.extern.jackson.Jacksonized;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CategoryDto {
+public class CommentInDto extends CommentOutDto {
     Long id;
-    String name;
+    @NotBlank(groups = {Create.class})
+    String text;
+
 }

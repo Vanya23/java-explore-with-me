@@ -1,9 +1,12 @@
-package ru.practicum.ewm.controller.pub;
+package ru.practicum.ewm.controller.pub.comments.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.jackson.Jacksonized;
+import ru.practicum.ewm.controller.pub.Create;
+
+import javax.validation.constraints.NotBlank;
 
 
 @NoArgsConstructor
@@ -13,8 +16,12 @@ import lombok.extern.jackson.Jacksonized;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Jacksonized
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LocationDto {
+public class CommentOutDto {
     Long id;
-    Double lat;
-    Double lon;
+    Long user;
+    Long event;
+    String created;
+    @NotBlank(groups = {Create.class})
+    String text;
+
 }

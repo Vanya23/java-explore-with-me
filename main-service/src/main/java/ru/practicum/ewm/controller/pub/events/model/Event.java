@@ -2,8 +2,8 @@ package ru.practicum.ewm.controller.pub.events.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import ru.practicum.ewm.controller.pub.EventState;
-import ru.practicum.ewm.controller.pub.Location;
+import ru.practicum.ewm.controller.pub.enums.EventState;
+import ru.practicum.ewm.controller.pub.location.Location;
 import ru.practicum.ewm.controller.pub.category.model.Category;
 import ru.practicum.ewm.controller.pub.users.model.User;
 

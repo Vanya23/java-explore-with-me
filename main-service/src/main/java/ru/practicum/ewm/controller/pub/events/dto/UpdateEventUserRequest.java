@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.jackson.Jacksonized;
-import ru.practicum.ewm.controller.pub.LocationDto;
+import ru.practicum.ewm.controller.pub.location.LocationDto;
 
 
 @NoArgsConstructor

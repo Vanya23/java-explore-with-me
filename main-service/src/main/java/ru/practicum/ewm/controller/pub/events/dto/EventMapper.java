@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import ru.practicum.ewm.controller.pub.EventState;
+import ru.practicum.ewm.controller.pub.enums.EventState;
 import ru.practicum.ewm.controller.pub.category.CategoryRepository;
 import ru.practicum.ewm.controller.pub.category.dto.CategoryMapper;
 import ru.practicum.ewm.controller.pub.events.model.Event;

@@ -4,8 +4,8 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
-import ru.practicum.ewm.controller.pub.Location;
-import ru.practicum.ewm.controller.pub.LocationDto;
+import ru.practicum.ewm.controller.pub.location.Location;
+import ru.practicum.ewm.controller.pub.location.LocationDto;
 
 @Component
 @RequiredArgsConstructor
